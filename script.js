@@ -2,9 +2,15 @@ let timer = 5;
 let minutes;
 let secondes;
 let state = true;
+let buttonState = flase;
 
 let displayState = document.getElementById('state');
 let displayTime = document.getElementById('timer');
+let button = document.getElementById('button');
+
+button.addEventListener('click', () =>{
+    
+})
 
 function tryState(){
     if(state) displayState.innerText = ('Work');
@@ -29,6 +35,10 @@ function decreaseTime(){
         swapState();
         timer = 1500;
     }
+}
+
+while(button != true){
+    
 }
 
 setInterval(decreaseTime, 1000);
