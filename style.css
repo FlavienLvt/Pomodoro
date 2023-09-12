@@ -1,0 +1,22 @@
+body {
+    background-color: rgba(255, 59, 65);
+}
+
+#state {
+    padding-top: 5%;
+    text-align: center;
+}
+
+#timer {
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.hide {
+    display: none;
+}

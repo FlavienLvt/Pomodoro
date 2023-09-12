@@ -6,18 +6,21 @@ let buttonState = false;
 let breaks = 0;
 let displayState = document.getElementById('state');
 let displayTime = document.getElementById('timer');
-let button = document.getElementById('button');
+let buttonPlay = document.getElementById('buttonPlay');
+
+let buttonStop = document.getElementById('buttonStop');
 
 tryState();
 showTime();
 
-button.addEventListener('click', () =>{
-    if(buttonState == false){
-        setInterval(decreaseTime, 1000);
-        buttonState = true;
-    } else {
-        location.reload();
-    }
+buttonPlay.addEventListener('click', () =>{
+    setInterval(decreaseTime, 1000);
+    buttonPlay.style.display = 'none';
+    buttonStop.style.display = 'block';
+});
+
+buttonStop.addEventListener('click', () =>{
+    location.reload();
 })
 
 function tryState(){
