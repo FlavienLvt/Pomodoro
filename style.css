@@ -1,13 +1,19 @@
 body {
-    background-color: rgba(255, 59, 65);
+    background-color: rgb(255, 94, 99);
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
 }
 
 #state {
+    font-size: 3em;
     padding-top: 5%;
     text-align: center;
 }
 
 #timer {
+    font-size: 4em;
     text-align: center;
 }
 
@@ -19,4 +25,10 @@ body {
 
 .hide {
     display: none;
+}
+
+button {
+    font-size: 35px;
+    border: none;
+    background-color: Transparent;
 }
