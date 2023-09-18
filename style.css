@@ -12,7 +12,6 @@ body {
     text-align: center;
 }
 
-
 #timer {
     font-size: 4em;
     text-align: center;
@@ -32,4 +31,8 @@ button {
     font-size: 35px;
     border: none;
     background-color: Transparent;
+}
+
+#buttonLocalStorage {
+    font-size: 25px;
 }
