@@ -31,8 +31,13 @@ button {
     font-size: 35px;
     border: none;
     background-color: Transparent;
+    cursor: pointer;
 }
 
 #buttonLocalStorage {
     font-size: 25px;
+}
+
+#form {
+    font-size: 35px;
 }

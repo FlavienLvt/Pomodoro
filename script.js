@@ -1,25 +1,50 @@
-let timer;
+let timer = 1500;
+let breakTime = 300;
+let longBreakTime = 1200;
 let minutes;
 let seconds;
 let state = true;
-let buttonState = false;
 let breaks = 0;
 let displayState = document.getElementById('state');
 let displayTime = document.getElementById('timer');
 let buttonPlay = document.getElementById('buttonPlay');
 let buttonLocal = document.getElementById('buttonLocalStorage');
 let buttonStop = document.getElementById('buttonStop');
+let inputWorkTime = document.getElementById('workTime');
+let inputBreakTime = document.getElementById('breakTime');
+let inputLongBreakTime = document.getElementById('longBreakTime');
 
-if(localStorage.getItem('time', timer) != null){
-    timer = localStorage.getItem('time', timer);
-} else {
-    timer = 1500;
-}
+/**
+ * The 3 next listeners are for the inputs for the timer cycles
+ */
+inputWorkTime.addEventListener('keyup', ()=>{
+    if(inputWorkTime.value != null && inputWorkTime.value > 0){
+        timer = inputWorkTime.value * 60;
+        showTime();
+    } else {
+        alert("Valeur < 0 ou non numérique");
+    }
+})
 
-//localStorage.setItem('state', state);
+inputBreakTime.addEventListener('keyup', ()=>{
+    if(inputBreakTime.value != null && inputBreakTime.value > 0){
+        breakTime = inputBreakTime.value * 60;
+        showTime();
+    } else {
+        alert("Valeur < 0 ou non numérique");
+    }
+})
+
+inputLongBreakTime.addEventListener('keyup', ()=>{
+    if(inputLongBreakTime.value != null && inputLongBreakTime.value > 0){
+        longBreakTime = inputLongBreakTime.value * 60;
+        showTime();
+    } else {
+        alert("Valeur < 0 ou non numérique");
+    }
+})
 tryState();
 showTime();
-
 /**
  * This listener is for the button display and for start timer
  */
@@ -33,7 +58,6 @@ buttonPlay.addEventListener('click', () =>{
  * This listner is for the button reload page
  */
 buttonStop.addEventListener('click', () =>{
-    localStorage.clear();
     location.reload();
 })
 
@@ -54,8 +78,9 @@ function tryState(){
  * This function switch between the 2 states
  */
 function swapState(){
-    if(state) state = false
-    else state = true
+    if(state) state = false;
+    else state = true;
+    tryState();
 }
 
 /**
@@ -76,11 +101,12 @@ function cycle(){
     if(state){
         if(breaks == 4){
             breaks = 0;
-            timer = 1200;
+            timer = longBreakTime;
             swapState();
         } else {
             breaks++;
-            timer = 300;
+            localStorage.setItem('breaks', breaks);
+            timer = breakTime;
             swapState();
         }
     } else{
@@ -93,12 +119,9 @@ function cycle(){
  * This function is for decrease time
  */
 function decreaseTime(){
-    tryState();
     timer--;
     if(timer < 0){
         cycle()
     }
     showTime();
-    localStorage.setItem('time', timer);
-    localStorage.setItem('state', state);
 }
