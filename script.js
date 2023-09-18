@@ -13,26 +13,41 @@ let buttonStop = document.getElementById('buttonStop');
 tryState();
 showTime();
 
+/**
+ * This listener is for the button display and for start timer
+ */
 buttonPlay.addEventListener('click', () =>{
     setInterval(decreaseTime, 1000);
     buttonPlay.style.display = 'none';
     buttonStop.style.display = 'block';
 });
 
+/**
+ * This listner is for the button reload page
+ */
 buttonStop.addEventListener('click', () =>{
     location.reload();
 })
 
+/**
+ * This function try the statement of the timer
+ */
 function tryState(){
     if(state) displayState.innerText = ('Work');
     else displayState.innerText = ('Break');
 }
 
+/**
+ * This function switch between the 2 states
+ */
 function swapState(){
     if(state) state = false
     else state = true
 }
 
+/**
+ * This function if for the timer display
+ */
 function showTime(){
     seconds = parseInt(timer%60 , 10);
     minutes = parseInt(timer/60 , 10);
@@ -41,6 +56,9 @@ function showTime(){
     displayTime.innerText = (minutes+':'+seconds);
 }
 
+/**
+ * This function is used to set the timer at the good value
+ */
 function cycle(){
     if(state){
         if(breaks == 4){
@@ -58,6 +76,9 @@ function cycle(){
     }
 }
 
+/**
+ * This function is for decrease time
+ */
 function decreaseTime(){
     tryState();
     timer--;
