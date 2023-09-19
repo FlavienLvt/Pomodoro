@@ -37,6 +37,7 @@ button {
 }
 
 #buttonLocalStorage {
+    margin-bottom: 3%;
     font-size: 25px;
 }
 
@@ -70,8 +71,7 @@ footer{
     align-items: center;
     justify-content: center;
     left: 0;
-    bottom: 0;
-    position: fixed;
+    position: absolute;
     width: 100%;
     color: white;
     background-color: rgb(56, 56, 56);
