@@ -14,6 +14,7 @@ let buttonStop = document.getElementById('buttonStop');
 let inputWorkTime = document.getElementById('workTime');
 let inputBreakTime = document.getElementById('breakTime');
 let inputLongBreakTime = document.getElementById('longBreakTime');
+const inputs = [inputWorkTime, inputBreakTime, inputLongBreakTime];
 
 /**
  * The few next line are for local storage
@@ -72,6 +73,17 @@ inputLongBreakTime.addEventListener('keyup', ()=>{
         alert("Valeur < 0 ou non numérique");
     }
 })
+
+/**
+ * This loop check expression regular
+ */
+for(let resultat of inputs) {
+    resultat.addEventListener('input', () => {
+        let inputValue = resultat.value.match(/^\d+$/);
+        if (inputValue === null || Number.parseInt(inputValue) < 0) {
+            resultat.value = "";
+        }
+})}
 
 /**
  * This listener is for the button display and for start timer
